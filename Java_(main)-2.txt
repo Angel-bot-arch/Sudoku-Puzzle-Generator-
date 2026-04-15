@@ -1,0 +1,96 @@
+// plan: fill the board one by one, like pick a number, check then repeat?? (recursion??)
+// make a checker method to figure out number placements, fill method to fill board, shuffle to shuffle the numbers making it unique, + make it pretty
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+public class SudokuPuzzleGenerator
+{   
+    public static int[] nums = {1,2,3,4,5,6,7,8,9};
+    public static int[][] board = new int[9][9];
+    public static void main(String[] args)
+    {
+        SudokuPuzzleGenerator sudoku = new SudokuPuzzleGenerator();
+        sudoku.fillBoard(0,0);
+        sudoku.printBoard();
+    }
+    //checks if the numbers are in the right place
+    public static boolean checker(int row, int col, int num){
+        for(int i = 0; i < 9; i++){ //check row
+            if(board[row][i] == num){
+                return false;    
+            }
+        }
+        for(int i = 0; i < 9; i++){ // check col
+            if(board[i][col] == num){
+                return false;    
+            }
+        }
+        //checking 3 x 3 box to see if there's a dup? hopefully it works
+        int Row = (row/3)*3;
+        int Col = (col/3)*3;
+        for(int i = Row; i < Row + 3; i++){
+            for(int j = Col; j < Col+3; j++){
+                if(board[i][j] == num){
+                    return false;
+                }    
+            }    
+        }
+        return true;
+    }
+    // fills the board 
+    public static boolean fillBoard(int row, int col){
+        if(row == 9){ //aka the board is filled
+            return true;    
+        }
+        int nextRow = 0;
+        int nextCol = 0;
+        if(col == 8){ // end of the column so gotta reset col but move onto next row
+            nextRow = row + 1;
+            nextCol = 0;
+        }else{ 
+            nextRow = row;
+            nextCol = col +1;
+        }
+        //shuffle numbers
+        shuffle(nums);
+        //fill in numbers
+        for(int i = 0; i < 9; i++){
+            int num = nums[i];
+            if(checker(row, col, num)){ // checks if the number fits like doesn't contradict anything
+                board[row][col] = num;
+                if(fillBoard(nextRow, nextCol)){ //repeat using recursion, filling in the rest of the board
+                    return true;     
+                }
+                board[row][col] = 0;
+            }
+        }
+        return false;
+    }
+    //shuffles the numbers, makes it unique every run through
+    public static void shuffle(int[] a){
+        Random rand = new Random();
+        for(int i = a.length-1; i> 0; i--){
+            int j = rand.nextInt(i+1); //picks a random index 
+            int temp = a[i]; // lines 77-79 swap to randomize
+            a[i] = a[j];
+            a[j] = temp;
+        }
+        
+    }
+    //make it pretty + print
+    public static void printBoard(){
+        for(int i = 0; i < 9; i++){ // rows
+            if(i % 3 == 0){
+                System.out.println("+-------+-------+-------+"); 
+            }
+            for(int j = 0; j < 9; j++){ //cols
+                if(j % 3 ==0){
+                    System.out.print("| ");  
+                }
+                System.out.print(board[i][j] + " "); //spaces so they look pretty and not cramped :P
+            }
+            System.out.println("|");
+        }
+        System.out.println("+-------+-------+-------+"); 
+    }
+}
