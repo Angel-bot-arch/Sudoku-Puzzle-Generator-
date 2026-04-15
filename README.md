@@ -1,2 +1,4 @@
 # Sudoku-Puzzle-Generator-
-A unique sudoku puzzle will generate each time it is run.
+- Made by Angel Wu
+- A unique Sudoku puzzle will be generated every time it is run.
+- 
