@@ -13,6 +13,6 @@ This code has 4 different methods with 4 different purposes:
 - The checker(int row, int col, int num) method is used in the fillBoard(int row, int col) method to ensure that it the number chosen is valid, in respect to it's position. So the checker method takes in the row, column, and number ints and makes sure that the number doesn't clash with any of the numbers in its row, column, or 3x3 square. 
 - The shuffle(int a) method which is also used in the fillBoard(int row, int col) method to make the numbers unique. 
 - The printBoard() method is to make the puzzle look nice and pretty by adding separators and borders( | or +-------+-------+-------+ ). It is also the method that prints out the board.
-
+Using these methods, the main method creates a new SudokuPuzzleGenerator object and calls the fillBoard(int row, int col) method and has the program fill the board starting with the position (0,0). Afterwards, the program calls printBoard() which prints the board.
 Files included: 
 SudokuPuzzleGenerator.java
