@@ -1,5 +1,8 @@
-// plan: fill the board one by one, like pick a number, check then repeat?? (recursion??)
-// make a checker method to figure out number placements, fill method to fill board, shuffle to shuffle the numbers making it unique, + make it pretty
+// plan: fill the board one by one, pick a number -> check -> repeat(recursion)
+// make a checker method to figure out number placements
+// fillBoard method to fill board 
+// shuffle method to shuffle the numbers making it unique
+// printBoard method to make it pretty
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
