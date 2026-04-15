@@ -5,7 +5,7 @@ Description:
 A unique Sudoku puzzle will be generated every time it is run. 
 
 How to run: 
-Copy and paste the code into a Java file (make sure the file is named SudokuPuzzleGenerator) and run the code. 
+Copy and paste the code into a Java file (make sure the file is named SudokuPuzzleGenerator) and run the code. For example, using java sandbox https://codehs.com/explore/sandbox/java , create a new sandbox program: java(main), copy and paste the code from SudokuPuzzleGenerator_Code into the main file, change the main file name to SudokuPuzzleGenerator, and hit run.
 
 How it works:
 This code has 4 different methods with 4 different purposes:
